@@ -99,21 +99,29 @@
 	};
 
 
-#if 0
 	gpio-keys {
 		compatible = "gpio-keys";
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_gpio_keys>;
 
-		back {
-			label = "Back";
-			gpios = <&gpio5 20 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_BACK>; /* KEY_BACK */
-			gpio-key,wakeup;
+		switch {
+			label = "Switch";
+			gpios = <&gpio3 26 GPIO_ACTIVE_LOW>;
+			linux,code = <55>;
+		};
 
+		a {
+			label = "A";
+			gpios = <&gpio3 27 GPIO_ACTIVE_LOW>;
+			linux,code = <26>;
+		};
+
+		b {
+			label = "B";
+			gpios = <&gpio3 28 GPIO_ACTIVE_LOW>;
+			linux,code = <27>;
 		};
 	};
-#endif
 	sound {
 		compatible = "fsl,imx6q-var-som-tlv320aic3x", "fsl,imx-audio-tlv320aic3x";
 		model = "tlv320aic3x-audio";
@@ -218,6 +226,7 @@
 		status = "okay";
 	};
 
+#if 0
 	wlan_bt_rfkill {
 		compatible = "net,rfkill-gpio";
 		name = "wlan_bt_rfkill";
@@ -227,6 +236,7 @@
 	btwilink {
 		compatible = "btwilink";
 	};
+#endif
 
 #if 0
 	kim {
@@ -258,19 +268,19 @@
 	pinctrl-0 = <&pinctrl_ecspi3_1>;
 	status = "okay";
 
-#ifndef VAR_SOM_SOLO_VSC
 	ads7846@0 {
 		reg = <0>;	/* CS0 */
-		compatible = "ti,ads7846";
+		compatible = "ti,tsc2046";
 		interrupt-parent = <&gpio4>;
 		interrupts = <25 0>;	
 		spi-max-frequency = <1500000>;
 		pendown-gpio = <&gpio4 25 0>;
-		ti,x-min = /bits/ 16 <4200>;
-		ti,x-max = /bits/ 16 <8080>;
-		ti,y-min = /bits/ 16 <4330>;
-		ti,y-max = /bits/ 16 <7980>;
-		ti,x-plate-ohms = /bits/ 16 <180>;
+		ti,x-min = /bits/ 16 <0>;
+		ti,x-max = /bits/ 16 <4095>;
+		ti,y-min = /bits/ 16 <0>;
+		ti,y-max = /bits/ 16 <4095>;
+		ti,swap-xy;
+		ti,x-plate-ohms = /bits/ 16 <40>;
 		ti,pressure-max = /bits/ 16 <255>;
 		ti,debounce-max	= /bits/ 16 <10>;
 		ti,debounce-tol = /bits/ 16 <3>;
@@ -279,7 +289,6 @@
 		ti,keep-vref-on;	
 		linux,wakeup;
 		};
-#endif
 };
 
 &fec {
@@ -502,7 +511,9 @@
 
 		pinctrl_gpio_keys: gpio_keysgrp {
 			fsl,pins = <
-//				MX6QDL_PAD_GPIO_5__GPIO1_IO05  0x80000000
+				MX6QDL_PAD_EIM_D26__GPIO3_IO26         0x1b0b0
+				MX6QDL_PAD_EIM_D27__GPIO3_IO27         0x1b0b0
+				MX6QDL_PAD_EIM_D28__GPIO3_IO28         0x1b0b0
 			>;
 		};
 
@@ -605,6 +616,7 @@
 		};
 
 		/* Variscite Bluetooth */
+#if 0
 		pinctrl_uart2_3: uart2grp-3 { /* RTS/CTS only mode */
 			fsl,pins = <
 				MX6QDL_PAD_SD3_DAT4__UART2_RX_DATA  	0x1b0b1
@@ -613,6 +625,7 @@
 				MX6QDL_PAD_EIM_D29__UART2_RTS_B	    	0x1b0b1
 			>;
 		};
+#endif
 
 		/* Variscite Uart2 support */
 		pinctrl_uart3_2: uart3grp-2 {	/* RX/TX RTS/CTS */
@@ -894,12 +907,14 @@
 
 
 /* Bluetooth Uart */
+#if 0
 &uart2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart2_3>;
 	fsl,uart-has-rtscts;
-	status = "okay";
+	status = "disabled";
 };
+#endif
 
 /* ttymxc2 UART */
 &uart3 {
