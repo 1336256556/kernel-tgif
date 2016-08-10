@@ -806,7 +806,7 @@
 		fsl,data-mapping = "spwg";
 		fsl,data-width = <24>;
 #ifndef VAR_SOM_SOLO_VSC
-		primary;
+		/* primary; */
 #endif
 		status = "okay";
 
@@ -847,6 +847,9 @@
 	lvds-channel@1 {
 		fsl,data-mapping = "spwg";
 		fsl,data-width = <24>;
+#ifndef VAR_SOM_SOLO_VSC
+		primary;
+#endif
 		status = "okay";
 
 		display-timings {
