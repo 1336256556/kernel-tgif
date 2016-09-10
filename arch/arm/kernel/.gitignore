@@ -1,1 +1,3 @@
 vmlinux.lds
+.*.cmd
+

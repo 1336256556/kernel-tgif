@@ -10,6 +10,7 @@ zconf.hash.c
 gconf.glade.h
 *.pot
 *.mo
+*.o
 
 #
 # configuration programs

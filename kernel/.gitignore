@@ -6,3 +6,5 @@ config_data.gz
 timeconst.h
 hz.bc
 x509_certificate_list
+*.s
+.*.cmd
