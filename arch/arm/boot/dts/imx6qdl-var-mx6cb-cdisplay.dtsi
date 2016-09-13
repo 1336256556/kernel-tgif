@@ -20,11 +20,11 @@
 
 &i2c3 {
 	/* Touch */
-	ctw6120_tsc@38 {
-		compatible = "edt,edt-ft5206";
-		reg = <0x38>;
+	touch: gt928@14 {
+		compatible = "goodix,gt928";
+		reg = <0x14>;
 		interrupt-parent = <&gpio3>;
-		interrupts = <7 0>;
+		interrupts = <&gpio5 17>;
 	};
 };
 
@@ -40,36 +40,36 @@
 		display-timings {
 			native-mode = <&timing0c>;
 			timing0c: hsd100pxn1 {
-				clock-frequency = <32000000>;
-				hactive = <800>;
-				vactive = <480>;
-				hback-porch = <39>;
-				hfront-porch = <39>;
-				vback-porch = <29>;
-				vfront-porch = <13>;
-				hsync-len = <47>;
-				vsync-len = <2>;
+				clock-frequency = <71428000>;
+				hactive = <1280>;
+				vactive = <800>;
+				hback-porch = <48>;
+				hfront-porch = <30>;
+				vback-porch = <6>;
+				vfront-porch = <10>;
+				hsync-len = <40>;
+				vsync-len = <6>;
 			};
 		};
 	};
 
 	lvds-channel@1 {
 		fsl,data-mapping = "spwg";
-		fsl,data-width = <24>;
+		fsl,data-width = <18>;
 		status = "okay";
 
 		display-timings {
 			native-mode = <&timing1>;
 			timing1: hsd100pxn1 {
-				clock-frequency = <38251000>;
-				hactive = <800>;
-				vactive = <600>;
-				hback-porch = <112>;
-				hfront-porch = <32>;
-				vback-porch = <3>;
-				vfront-porch = <17>;
-				hsync-len = <80>;
-				vsync-len = <4>;
+				clock-frequency = <32000000>;
+				hactive = <1280>;
+				vactive = <800>;
+				hback-porch = <39>;
+				hfront-porch = <39>;
+				vback-porch = <29>;
+				vfront-porch = <13>;
+				hsync-len = <47>;
+				vsync-len = <2>;
 			};
 		};
 	};
