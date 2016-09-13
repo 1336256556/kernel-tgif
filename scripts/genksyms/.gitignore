@@ -3,4 +3,3 @@
 *.tab.c
 *.tab.h
 genksyms
-*.o
