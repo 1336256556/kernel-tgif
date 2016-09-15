@@ -57,15 +57,15 @@
 		display-timings {
 			native-mode = <&timing0>;
 			timing0: hsd100pxn1 {
-				clock-frequency = <35714000>;
-				hactive = <800>;
-				vactive = <480>;
-				hback-porch = <24>;
-				hfront-porch = <15>;
-				vback-porch = <13>;
-				vfront-porch = <20>;
-				hsync-len = <20>;
-				vsync-len = <13>;
+				clock-frequency = <71428000>;
+				hactive = <1280>;
+				vactive = <800>;
+				hback-porch = <48>;
+				hfront-porch = <30>;
+				vback-porch = <6>;
+				vfront-porch = <10>;
+				hsync-len = <40>;
+				vsync-len = <6>;
 			};
 		};
 	};
@@ -81,8 +81,8 @@
 			native-mode = <&timing1>;
 			timing1: hsd100pxn1 {
 				clock-frequency = <32000000>;
-				hactive = <800>;
-				vactive = <480>;
+				hactive = <1280>;
+				vactive = <800>;
 				hback-porch = <39>;
 				hfront-porch = <39>;
 				vback-porch = <29>;
