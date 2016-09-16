@@ -19,13 +19,13 @@
 };
 
 &i2c3 {
-	/* Touch */
-	touch: gt928@14 {
-		compatible = "goodix,gt928";
-		reg = <0x14>;
-		interrupt-parent = <&gpio3>;
-		interrupts = <&gpio5 17>;
-	};
+        goodix_touch: gt928@14 {
+                compatible = "goodix,gt928";
+                reg = <0x14>;
+                interrupt-parent = <&gpio5>;
+                interrupts = <0 0>;
+                irq-gpios = <&gpio5 17>;
+        };
 };
 
 &ldb {
@@ -35,6 +35,7 @@
 		fsl,data-mapping = "spwg";
 		fsl,data-width = <24>;
 		status = "okay";
+                crtc = "ipu1-di0";       /* ?? */
 		primary;
 
 		display-timings {
@@ -57,6 +58,7 @@
 		fsl,data-mapping = "spwg";
 		fsl,data-width = <18>;
 		status = "okay";
+                crtc = "ipu1-di1";       /* ?? */
 
 		display-timings {
 			native-mode = <&timing1>;

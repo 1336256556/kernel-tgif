@@ -15,7 +15,8 @@
  */
 
 &mxcfb1 {
-	interface_pix_fmt = "RGB24";
+        status = "okay";
+	interface_pix_fmt = "RGB666";
 };
 
 &ecspi3 {
@@ -48,7 +49,6 @@
 	lvds-channel@0 {
 		fsl,data-mapping = "spwg";
 		fsl,data-width = <24>;
-                crtc = "ipu1-di0";
 		status = "okay";
 
 		display-timings {
@@ -70,14 +70,13 @@
 	lvds-channel@1 {
 		fsl,data-mapping = "spwg";
 		fsl,data-width = <18>;
-                crtc = "ipu1-di1";
 		status = "okay";
 		primary;
 
 		display-timings {
 			native-mode = <&timing1>;
 			timing1: hsd100pxn1 {
-				clock-frequency = <32000000>;
+				clock-frequency = <38251000>;
 				hactive = <1280>;
 				vactive = <800>;
 				hback-porch = <39>;

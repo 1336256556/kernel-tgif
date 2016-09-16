@@ -15,35 +15,20 @@
  */
 
 &mxcfb1 {
-	interface_pix_fmt = "RGB666";
+        interface_pix_fmt = "RGB666";
 };
 
+/*
 &i2c3 {
-	touch: ft5x06_ts@38 {
-		compatible = "focaltech,5x06";
-		reg = <0x38>;
-		focaltech,family-id = <0x54>;
-		vdd-supply = <&touch_3v3_regulator>;
-		vcc_i2c-supply = <&touch_3v3_regulator>;
-		focaltech,display-coords = <0 0 800 480>;
-		focaltech,name = "ft6x06";
-		focaltech,no-force-update;
-		focaltech,group-id = <1>;
-		focaltech,hard-reset-delay-ms = <20>;
-		focaltech,soft-reset-delay-ms = <150>;
-		focaltech,num-max-touches = <2>;
-		focaltech,fw-name = "ft_8610_qrd_fw.bin";
-		focaltech,fw-delay-aa-ms = <100>;
-		focaltech,fw-delay-55-ms = <30>;
-		focaltech,fw-upgrade-id1 = <0x79>;
-		focaltech,fw-upgrade-id2 = <0x08>;
-		focaltech,fw-delay-readid-ms = <10>;
-		focaltech,fw-delay-era-flsh-ms = <2000>;
-		focaltech,fw-auto-cal;
-		focaltech,mirror_h;
-		focaltech,mirror_v;
-	};
+        touch: gt928@14 {
+                compatible = "goodix,gt928";
+                reg = <0x14>;
+                interrupt-parent = <&gpio>;
+                interrupts = <0 0>;
+                irq-gpios = <&gpio5 17>;
+        };
 };
+*/
 
 &ldb {
 	status = "okay";
@@ -51,7 +36,7 @@
 	lvds-channel@0 {
 		fsl,data-mapping = "spwg";
 		fsl,data-width = <24>;
-		crtc = "ipu1-di0";
+                crtc = "ipu1-di0";
 		status = "okay";
 
 		display-timings {
@@ -73,22 +58,22 @@
 	lvds-channel@1 {
 		fsl,data-mapping = "spwg";
 		fsl,data-width = <18>;
-		crtc = "ipu1-di1";
-		primary;
+                crtc = "ipu1-di1";
 		status = "okay";
+                primary;
 
 		display-timings {
 			native-mode = <&timing1>;
 			timing1: hsd100pxn1 {
-				clock-frequency = <32000000>;
+				clock-frequency = <38251000>;
 				hactive = <1280>;
 				vactive = <800>;
-				hback-porch = <39>;
-				hfront-porch = <39>;
-				vback-porch = <29>;
-				vfront-porch = <13>;
-				hsync-len = <47>;
-				vsync-len = <2>;
+				hback-porch = <112>;
+				hfront-porch = <32>;
+				vback-porch = <3>;
+				vfront-porch = <17>;
+				hsync-len = <80>;
+				vsync-len = <4>;
 			};
 		};
 	};

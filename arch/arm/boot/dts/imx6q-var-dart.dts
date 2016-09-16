@@ -142,11 +142,13 @@
 	};
 };
 
+/*
 &touch {
 	interrupt-parent = <&gpio1>;
 	interrupts = <4 0>;
 	focaltech,irq-gpio = <&gpio1 4 0x00>;
 };
+*/
 
 &mxcfb1 {
 	status = "okay";
